@@ -44,7 +44,7 @@ app.get('/auth/discord/callback',
 );
 
 app.get('/dashboard', ensureAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+    res.sendFile(path.join(__dirname,  'dashboard.html'));
 });
 
 app.get('/user-data', ensureAuthenticated, (req, res) => {
