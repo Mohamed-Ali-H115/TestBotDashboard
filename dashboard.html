@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <p id="welcome-message">Welcome, user!</p>
+        <h2>Servers:</h2>
+        <ul id="guild-list"></ul>
+    </div>
+    <script>
+        // Fetch user data from the server
+        fetch('/user-data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('welcome-message').textContent = `Welcome, ${data.username}!`;
+                const guildList = document.getElementById('guild-list');
+                data.guilds.forEach(guild => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = guild.name;
+                    guildList.appendChild(listItem);
+                });
+            });
+    </script>
+</body>
+</html>
